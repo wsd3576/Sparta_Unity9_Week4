@@ -12,13 +12,15 @@ public class PlayerController : BaseController
     {
         camera = Camera.main;
     }
-    void OnMove(InputValue inputValue)
+
+    //InputSystem의 플레이어 인풋에 등록되어있는 입력들
+    void OnMove(InputValue inputValue) //W,A,S,D 입력시
     {
         movementDirection = inputValue.Get<Vector2>();
         movementDirection = movementDirection.normalized;
     }
 
-    void OnLook(InputValue inputValue)
+    void OnLook(InputValue inputValue) //마우스 이동시
     {
         Vector2 mousePosition = inputValue.Get<Vector2>();
         Vector2 worldPosition = camera.ScreenToWorldPoint(mousePosition);
@@ -34,12 +36,12 @@ public class PlayerController : BaseController
         }
     }
 
-    void OnJump(InputValue inputValue)
+    void OnJump(InputValue inputValue) //스페이스바 입력시
     {
         IsJump = inputValue.isPressed;
     }
 
-    void OnSprint(InputValue inputValue)
+    void OnSprint(InputValue inputValue) //쉬프드 입력시
     {
         IsSprint = inputValue.isPressed;
     }
