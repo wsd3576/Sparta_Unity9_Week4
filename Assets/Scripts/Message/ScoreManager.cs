@@ -79,20 +79,22 @@ public class ScoreManager : MonoBehaviour
             StackScoreCount.text = "Fail";
         }
 
-        yield return new WaitForSeconds(2f);
-
-        yield return StartCoroutine(MoveRectX(rect, 150f, 0.5f));
+        yield return new WaitForSeconds(0.5f);
 
         if (isEnterFalppyPlane && !isFlappyPlaneCleared)
         {
             FlappyScoreCount.text = originalString;
+            isEnterFalppyPlane = false;
         }
         else if (isEnterTheStack && !isTheStackCleared)
         {
             StackScoreCount.text = originalString;
+            isEnterTheStack = false;
         }
-        isEnterFalppyPlane = false;
-        isEnterTheStack = false;
+
+        yield return new WaitForSeconds(2f);
+
+        yield return StartCoroutine(MoveRectX(rect, 150f, 0.5f));
     }
 
     //움직임을 구현하는 코드를 묶은 코루틴
