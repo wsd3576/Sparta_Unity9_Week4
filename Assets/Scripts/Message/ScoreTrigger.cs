@@ -30,24 +30,24 @@ public class ScoreTrigger : MonoBehaviour
         if (TheStackbestScore == 0 && TheStackbestCombo == 0) yetPlayedTheStack = true;
         if (FlappyPlanebestScore == 0) yetPlayedTheStack = true;
 
-        if (yetPlayedTheStack) TheStackScoreMessage = "You played TheStack yet.";
-        else TheStackScoreMessage = $"Your HighScore of The Stack is... \n Score : {TheStackbestScore} Combo : {TheStackbestCombo}";
-
         if (yetPlayedFlappyPlane) FlappyPlaneScoreMessage = "You played FlappyPlane yet.";
         else FlappyPlaneScoreMessage = $"Your HighScore of FlappyPlane is... \n Score : {FlappyPlanebestScore}";
+
+        if (yetPlayedTheStack) TheStackScoreMessage = "You played TheStack yet.";
+        else TheStackScoreMessage = $"Your HighScore of The Stack is... \n Score : {TheStackbestScore} Combo : {TheStackbestCombo}";
     }
 
     public void DisplayScoreInfo()
     {
-        StartCoroutine(DisplayMessagesSequentially());
+        StartCoroutine(DisplayMessagesSequentially()); //순서대로 미니게임 기록을 불러오는 코루틴
     }
 
     private IEnumerator DisplayMessagesSequentially()
     {
-        MessageManager.Instance.messageSystem.ShowDialogue(TheStackScoreMessage);
+        MessageManager.Instance.messageSystem.ShowDialogue(FlappyPlaneScoreMessage);
 
         yield return new WaitForSeconds(2.5f);
 
-        MessageManager.Instance.messageSystem.ShowDialogue(FlappyPlaneScoreMessage);
+        MessageManager.Instance.messageSystem.ShowDialogue(TheStackScoreMessage);
     }
 }

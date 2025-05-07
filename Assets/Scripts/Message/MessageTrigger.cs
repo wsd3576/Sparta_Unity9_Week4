@@ -54,21 +54,20 @@ public class MessageTrigger : BaseTrigger
 
     protected override void OnTriggerEnter2D(Collider2D collider)
     {
-        base.OnTriggerEnter2D(collider);
+        base.OnTriggerEnter2D(collider); //BaseTrigger의 플레이어가 영역안에 들어왔는지 따지는 조건문을 그대로 사용
         messageObject.SetActive(true);
         guideText.SetActive(true);
 
-        dialogueIndex = 1;
+        dialogueIndex = 1; //나갔다 들어왔을 경우 대사출력 순서 초기화
         dialogueFinished = false;
-        MessageManager.Instance.messageSystem.ShowDialogue(dialogues[0]);
+        MessageManager.Instance.messageSystem.ShowDialogue(dialogues[0]); //영역에 들어오면 바로 첫번째 메세지 출력
     }
 
     protected override void OnTriggerExit2D(Collider2D collider)
     {
-        base.OnTriggerExit2D(collider);
+        base.OnTriggerExit2D(collider); //BaseTrigger의 플레이어가 영역밖에 나갔는지 따지는 조건문을 그대로 사용
         messageObject.SetActive(false);
 
-        dialogueIndex = 1;
         dialogueFinished = false;
     }
 }

@@ -19,6 +19,7 @@ public class FlappyPlaneGameManager : MonoBehaviour
     FlappyPlanePlayer player;
     FlappyPlaneUIManager uiManager;
     public FlappyPlaneUIManager UIManager { get { return uiManager; } }
+
     private void Awake()
     {
         gameManager = this;
@@ -29,6 +30,8 @@ public class FlappyPlaneGameManager : MonoBehaviour
     private void Start()
     {
         uiManager.UpdateScore(0);
+
+        //재시작시에도 전의 값을 유지하는 static bool값 isRestart를 가지고 게임을 바로 시작할지 따지는 조건
         if (isRestart)
         {
             uiManager.FirstRun.SetActive(false);
@@ -47,7 +50,7 @@ public class FlappyPlaneGameManager : MonoBehaviour
 
     public void StartGame()
     {
-        UIManager.scoreText.gameObject.SetActive(true);
+        uiManager.scoreText.gameObject.SetActive(true);
         uiManager.ToggleFirstRunUI();
         player.StartGame();
         isGameOver = false;
@@ -60,6 +63,7 @@ public class FlappyPlaneGameManager : MonoBehaviour
 
         uiManager.ToggleRestartTextUI();
 
+        //플레이어프리퍼런스에 FlappyPlane의 최고점수를 갱신하는 부분
         int bestScore = PlayerPrefs.GetInt("FlappyPlaneBestScore", 0);
         if (currentScore > bestScore)
         {
@@ -72,6 +76,7 @@ public class FlappyPlaneGameManager : MonoBehaviour
         isRestart = true;
     }
 
+    //리셋할 경우 현재 활성화되어있는 씬을 다시 로드해 오는 함수
     public void ResetGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

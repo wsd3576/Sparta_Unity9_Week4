@@ -273,9 +273,14 @@ public class TheStack : MonoBehaviour
         if(bestScore < stackCount)
         {
             bestScore = stackCount;
-            bestCombo = maxCombo;
 
             PlayerPrefs.SetInt(BestScoreKey, bestScore);
+
+        }
+        if(bestCombo < maxCombo)
+        {
+            bestCombo = maxCombo;
+
             PlayerPrefs.SetInt(BestComboKey, bestCombo);
         }
     }
