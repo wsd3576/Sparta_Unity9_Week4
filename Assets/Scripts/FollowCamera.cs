@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class FollowCamera : MonoBehaviour
 {
-    public Transform target;
+    [SerializeField] private Transform target;
 
-    public Vector2 minCamLimit;
-    public Vector2 maxCamLimit;
+    [SerializeField] private Vector2 minCamLimit;
+    [SerializeField] private Vector2 maxCamLimit;
 
     void Start()
     {
+        target = FindAnyObjectByType<PlayerController>().gameObject.transform;
         if (target == null) return;
     }
 
