@@ -65,7 +65,7 @@ public class ScoreManager : MonoBehaviour
         yield return StartCoroutine(MoveRectX(rect, -150f, 0.5f));
 
         //각 입장한 미니게임마다 실패여부를 확인하는 부분
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         string originalString = null;
         if (isEnterFalppyPlane && !isFlappyPlaneCleared)
@@ -79,7 +79,7 @@ public class ScoreManager : MonoBehaviour
             StackScoreCount.text = "Fail";
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         if (isEnterFalppyPlane && !isFlappyPlaneCleared)
         {
