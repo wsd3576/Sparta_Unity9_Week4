@@ -6,6 +6,7 @@ using UnityEngine;
 public class MessageTrigger : BaseTrigger
 {
     [SerializeField] private string[] dialogues;
+    [SerializeField] private Vector3 offSet;
 
     private int dialogueIndex = 1;
     private bool dialogueFinished = false;
@@ -55,6 +56,7 @@ public class MessageTrigger : BaseTrigger
     protected override void OnTriggerEnter2D(Collider2D collider)
     {
         base.OnTriggerEnter2D(collider); //BaseTrigger의 플레이어가 영역안에 들어왔는지 따지는 조건문을 그대로 사용
+        MessageManager.Instance.rectTransform.position = gameObject.transform.position + offSet;
         messageObject.SetActive(true);
         guideText.SetActive(true);
 

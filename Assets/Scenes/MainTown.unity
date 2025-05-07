@@ -5046,9 +5046,9 @@ RectTransform:
   - {fileID: 1105296603}
   m_Father: {fileID: 1624163938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 120}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &16271689
@@ -5904,6 +5904,7 @@ MonoBehaviour:
   dialogues:
   - This is the Place to Play some MiniGames
   - Go, Choose the MiniGame and Enjoy it.
+  offSet: {x: 0, y: 0, z: 0}
 --- !u!1 &91269175
 GameObject:
   m_ObjectHideFlags: 0
@@ -9376,6 +9377,7 @@ MonoBehaviour:
   - A simple game that play with simple tapping
   - If you click the screen or press space key, The plane will flies up.
   - Press F to the Object to Play.
+  offSet: {x: 0, y: 0, z: 0}
 --- !u!61 &900149260
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9815,6 +9817,7 @@ MonoBehaviour:
   - A simple game that play with simple tapping
   - If you click the screen, the block will stacking
   - Press F to the Object to Play.
+  offSet: {x: 0, y: 0, z: 0}
 --- !u!61 &1148014245
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10002,6 +10005,7 @@ MonoBehaviour:
   - Did you played Minigames?
   - Let's check it.
   - Press 'F' to check your BestScores.
+  offSet: {x: 0, y: 0, z: 0}
 --- !u!61 &1259359846
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12062,7 +12066,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1624163937
 Canvas:
   m_ObjectHideFlags: 0
@@ -12072,8 +12076,8 @@ Canvas:
   m_GameObject: {fileID: 1624163934}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
-  m_Camera: {fileID: 91269177}
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -12095,7 +12099,7 @@ RectTransform:
   m_GameObject: {fileID: 1624163934}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 16271688}
@@ -12104,8 +12108,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1624163939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12119,6 +12123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messageSystem: {fileID: 0}
+  rectTransform: {fileID: 0}
 --- !u!1 &1667491978
 GameObject:
   m_ObjectHideFlags: 0
