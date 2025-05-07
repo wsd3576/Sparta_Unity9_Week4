@@ -6,7 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class PlayerController : BaseController
 {
-    private Camera camera;
+    private new Camera camera;
 
     private void Start()
     {
