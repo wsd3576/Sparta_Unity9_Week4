@@ -7,7 +7,7 @@ public class FollowCamera : MonoBehaviour
     [SerializeField] private Vector2 minCamLimit;
     [SerializeField] private Vector2 maxCamLimit;
 
-    void Start()
+    void Awake()
     {
         target = FindAnyObjectByType<PlayerController>().gameObject.transform;
         if (target == null) return;
