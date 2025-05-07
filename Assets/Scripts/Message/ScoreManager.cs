@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -47,8 +48,6 @@ public class ScoreManager : MonoBehaviour
         Debug.Log("씬을 불러왔습니다. 오브젝트를 찾습니다.");
         if(scene.name == "MainTown")
         {
-            flappyPlane = null;
-            theStack = null;
             StartCoroutine(AnimateScorePanel()); //마을 씬에서 미니게임 성공여부를 보여주기 위한 코루틴 실행
         }
         flappyPlane = FindObjectOfType<FlappyPlaneGameManager>();
@@ -102,12 +101,12 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        if (isEnterFalppyPlane && !isFlappyPlaneCleared && !flappyPlane.isGameOver)
+        if (flappyPlane != null && !isFlappyPlaneCleared && !flappyPlane.isGameOver)
         {
             UpdateFlappyScore();
         }
 
-        if (isEnterTheStack && !isTheStackCleared && !theStack.isGameOver)
+        if (theStack != null && !isTheStackCleared && !theStack.isGameOver)
         {
             UpdateStackScore();
         }
