@@ -95,12 +95,12 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        if (flappyPlane != null && !isFlappyPlaneCleared && !flappyPlane.isGameOver)
+        if (isEnterFalppyPlane && !isFlappyPlaneCleared && !flappyPlane.isGameOver)
         {
             UpdateFlappyScore();
         }
 
-        if (theStack != null && !isTheStackCleared && !theStack.isGameOver)
+        if (isEnterTheStack && !isTheStackCleared && !theStack.isGameOver)
         {
             UpdateStackScore();
         }
