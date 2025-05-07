@@ -47,6 +47,8 @@ public class ScoreManager : MonoBehaviour
         Debug.Log("씬을 불러왔습니다. 오브젝트를 찾습니다.");
         if(scene.name == "MainTown")
         {
+            flappyPlane = null;
+            theStack = null;
             StartCoroutine(AnimateScorePanel()); //마을 씬에서 미니게임 성공여부를 보여주기 위한 코루틴 실행
         }
         flappyPlane = FindObjectOfType<FlappyPlaneGameManager>();
@@ -64,6 +66,7 @@ public class ScoreManager : MonoBehaviour
         yield return StartCoroutine(MoveRectX(rect, -150f, 0.5f));
 
         //각 입장한 미니게임마다 실패여부를 확인하는 부분
+        yield return new WaitForSeconds(0.5f);
         if (isEnterFalppyPlane)
         {
             isEnterFalppyPlane = false;
