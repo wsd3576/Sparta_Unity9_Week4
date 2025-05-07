@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreTrigger : BaseTrigger
+public class ScoreTrigger : MonoBehaviour
 {
     int TheStackbestScore = 0;
     public int TheStackBestScore { get => TheStackbestScore; }
@@ -21,12 +21,8 @@ public class ScoreTrigger : BaseTrigger
     private string TheStackScoreMessage;
     private string FlappyPlaneScoreMessage;
 
-    private MessageTrigger messageTrigger;
-
     private void Start()
     {
-        messageTrigger = GetComponent<MessageTrigger>();
-
         TheStackbestScore = PlayerPrefs.GetInt(TheStackBestScoreKey, 0);
         TheStackbestCombo = PlayerPrefs.GetInt(TheStackBestComboKey, 0);
         FlappyPlanebestScore = PlayerPrefs.GetInt(FlappyPlaneBestScoreKey, 0);

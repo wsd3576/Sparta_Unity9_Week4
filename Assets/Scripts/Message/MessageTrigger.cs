@@ -6,12 +6,12 @@ using UnityEngine;
 public class MessageTrigger : BaseTrigger
 {
     [SerializeField] private string[] dialogues;
+
+    private int dialogueIndex = 1;
+    private bool dialogueFinished = false;
     private bool hasFunction;
 
-    private int dialogueIndex = 0;
-
-    private bool dialogueFinished = false;
-
+    GameObject messageObject;
     GameObject guideText;
 
     SceneTrigger sceneTrigger;
@@ -19,29 +19,32 @@ public class MessageTrigger : BaseTrigger
 
     private void Start()
     {
-        gameObject = MessageManager.Instance.messageSystem.gameObject;
+        messageObject = MessageManager.Instance.messageSystem.gameObject;
+        guideText = messageObject.transform.Find("GuideText").gameObject;
+
         sceneTrigger = transform.GetComponent<SceneTrigger>();
         scoreTrigger = transform.GetComponent<ScoreTrigger>();
-        if (sceneTrigger != null || scoreTrigger != null) hasFunction = true;
-        else hasFunction = false;
-        guideText = gameObject.transform.Find("GuideText").gameObject;
+        hasFunction = (sceneTrigger != null || scoreTrigger != null);
     }
 
     private void Update()
     {
-        if (isPlayerInZone && Input.GetKeyDown(KeyCode.F))
+        if (!isPlayerInZone) return;
+
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            if (dialogueIndex < dialogues.Length - 1)
+            if (!dialogueFinished)
             {
+                MessageManager.Instance.messageSystem.ShowDialogue(dialogues[dialogueIndex]);
                 dialogueIndex++;
-                if (dialogueIndex == dialogues.Length - 1)
+
+                if (dialogueIndex >= dialogues.Length)
                 {
                     guideText.SetActive(false);
                     dialogueFinished = true;
                 }
-                MessageManager.Instance.messageSystem.ShowDialogue(dialogues[dialogueIndex]);
             }
-            else if (hasFunction && dialogueFinished)
+            else if (hasFunction)
             {
                 if (sceneTrigger != null) sceneTrigger.ActiveFunction();
                 else if (scoreTrigger != null) scoreTrigger.DisplayScoreInfo();
@@ -52,15 +55,20 @@ public class MessageTrigger : BaseTrigger
     protected override void OnTriggerEnter2D(Collider2D collider)
     {
         base.OnTriggerEnter2D(collider);
-        gameObject.SetActive(true);
+        messageObject.SetActive(true);
         guideText.SetActive(true);
+
+        dialogueIndex = 1;
+        dialogueFinished = false;
         MessageManager.Instance.messageSystem.ShowDialogue(dialogues[0]);
     }
 
     protected override void OnTriggerExit2D(Collider2D collider)
     {
         base.OnTriggerExit2D(collider);
-        dialogueIndex = 0;
-        gameObject.SetActive(false);
+        messageObject.SetActive(false);
+
+        dialogueIndex = 1;
+        dialogueFinished = false;
     }
 }
