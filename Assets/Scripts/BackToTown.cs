@@ -7,10 +7,6 @@ public class BackToTown : MonoBehaviour
 {
     public void ReturnTown()
     {
-        if (SceneManager.GetActiveScene().name == "FlappyPlaneScene")
-        {
-
-        }
         SceneManager.LoadScene("MainTown");
     }
 }
