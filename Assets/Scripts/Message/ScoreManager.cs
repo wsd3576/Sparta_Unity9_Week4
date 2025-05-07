@@ -66,20 +66,33 @@ public class ScoreManager : MonoBehaviour
 
         //각 입장한 미니게임마다 실패여부를 확인하는 부분
         yield return new WaitForSeconds(0.5f);
-        if (isEnterFalppyPlane)
+
+        string originalString = null;
+        if (isEnterFalppyPlane && !isFlappyPlaneCleared)
         {
-            isEnterFalppyPlane = false;
-            if(!isFlappyPlaneCleared) FlappyScoreCount.text = "Fail";
+            originalString = FlappyScoreCount.text;
+            FlappyScoreCount.text = "Fail";
         }
-        else if (isEnterTheStack)
+        else if (isEnterTheStack && !isTheStackCleared)
         {
-            isEnterTheStack = false;
-            if(!isTheStackCleared) StackScoreCount.text = "Fail";
+            originalString = StackScoreCount.text;
+            StackScoreCount.text = "Fail";
         }
 
         yield return new WaitForSeconds(2f);
 
         yield return StartCoroutine(MoveRectX(rect, 150f, 0.5f));
+
+        if (isEnterFalppyPlane && !isFlappyPlaneCleared)
+        {
+            FlappyScoreCount.text = originalString;
+        }
+        else if (isEnterTheStack && !isTheStackCleared)
+        {
+            StackScoreCount.text = originalString;
+        }
+        isEnterFalppyPlane = false;
+        isEnterTheStack = false;
     }
 
     //움직임을 구현하는 코드를 묶은 코루틴
